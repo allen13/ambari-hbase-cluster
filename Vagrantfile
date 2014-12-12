@@ -1,7 +1,7 @@
 require 'fileutils'
 require 'open-uri'
 
-EXTRA_HBASE_SERVERS = 2
+EXTRA_HBASE_SERVERS = 0
 
 Vagrant.configure("2") do |config|
   create_hbase_vm(1, config, 4096)

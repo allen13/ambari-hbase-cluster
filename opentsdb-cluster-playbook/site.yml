@@ -1,21 +1,7 @@
-- name: cloudera servers
-  hosts: cloudera
+- name: hadoop servers
+  hosts: hadoop
   gather_facts: false
   sudo: true
   roles:
     - shared-host-file
-    - cloudera-common
-
-- name: setup cloudera manager host
-  hosts: cloudera-manager-master
-  gather_facts: false
-  sudo: true
-  roles:
-    - cloudera-manager-master
-
-- name: setup cloudera agent hosts
-  hosts: cloudera-manager-agent
-  gather_facts: false
-  sudo: true
-  roles:
-    - cloudera-manager-agent
+    - ambari
