@@ -4,4 +4,4 @@
   sudo: true
   roles:
     - shared-host-file
-    - ambari
+    - ambari-server
