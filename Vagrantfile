@@ -1,7 +1,4 @@
-require 'fileutils'
-require 'open-uri'
-
-EXTRA_HBASE_SERVERS = 3
+EXTRA_HBASE_SERVERS = 1
 
 Vagrant.configure("2") do |config|
   create_hbase_vm(1, config, 2048)
@@ -12,7 +9,7 @@ Vagrant.configure("2") do |config|
 end
 
 def create_hbase_vm(vm_number, config, memory)
-  vm_name = "hbase-%02d" % vm_number
+  vm_name = "hdp-%02d" % vm_number
 
   config.vm.define vm_name do |config|
     config.vm.box = "ubuntu/precise64"
@@ -23,7 +20,7 @@ def create_hbase_vm(vm_number, config, memory)
       vb.cpus = 1
     end
 
-    vm_ip = "172.17.8.#{vm_number+100}"
+    vm_ip = "192.168.1.#{vm_number+100}"
     config.vm.network :private_network, ip: vm_ip
 
   end

@@ -1,7 +1,20 @@
-- name: hadoop servers
-  hosts: hadoop
+- name: all
+  hosts: all
   gather_facts: false
   sudo: true
   roles:
     - shared-host-file
+
+- name: ambari servers
+  hosts: ambari-server
+  gather_facts: false
+  sudo: true
+  roles:
     - ambari-server
+
+- name: ambari agent servers
+  hosts: ambari-agent
+  gather_facts: false
+  sudo: true
+  roles:
+    - ambari-agent

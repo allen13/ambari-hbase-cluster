@@ -1,0 +1,12 @@
+- name: install hortonworks ambari repo key
+  apt_key: keyserver=keyserver.ubuntu.com id=B9733A7A07513CAD
+
+- name: install hortonworks ambari repo
+  apt_repository:
+    repo: deb http://public-repo-1.hortonworks.com/ambari/ubuntu12/1.x/updates/1.7.0 Ambari main
+
+- name: install ntp (all ambari services need ntp)
+  apt: name=ntp state=latest
+
+- name: start ntp
+  service: name=ntp enabled=yes state=started

@@ -1,9 +1,10 @@
-- name: install hortonworks ambari repo gpg key
-  apt_key: keyserver=keyserver.ubuntu.com id=B9733A7A07513CAD
+- name: install ambari server
+  apt: name=ambari-server state=latest
+  register: ambari_installed
 
-- name: install hortonworks ambari repo
-  apt_repository:
-    repo: deb http://public-repo-1.hortonworks.com/ambari/ubuntu12/1.x/updates/1.7.0 Ambari main
+- name: setup ambari server and accept all defaults
+  shell: ambari-server setup -s
+  when: ambari_installed.changed
 
-- name: install ambari
-  apt: name=ambari-server state=present
+- name: start ambari server
+  service: name=ambari-server state=started enabled=yes

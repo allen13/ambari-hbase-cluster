@@ -1,2 +1,5 @@
-[hadoop]
-hbase-01 ansible_ssh_host=172.17.8.101 ansible_ssh_user=vagrant
+[ambari-server]
+hdp-01 ansible_ssh_host=192.168.1.101 ansible_ssh_user=vagrant
+
+[ambari-agent]
+hdp-02 ansible_ssh_host=192.168.1.102 ansible_ssh_user=vagrant
